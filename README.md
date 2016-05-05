@@ -1,7 +1,8 @@
 # Spring Profiler
 
 Spring Profiler is a small utility to benchmark of methods invocation time.
-It provides possibility to measure invocation time without re-deploying if it set's already! You can enable benchmark using VirtualVM!
+It provides possibility to measure invocation time without re-deploying (on the fly) if it set's already!
+You can enable/disable benchmark using VirtualVM!
 
 ### Version
 0.0.1
