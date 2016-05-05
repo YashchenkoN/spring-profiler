@@ -3,7 +3,7 @@ package tech.yashchenkon.utils.profiling;
 /**
  * @author Nikolay Yashchenko
  */
-public class ProfilingSwitcherImpl implements ProfilingSwitcherMBean {
+public class ProfilingSwitcherImpl implements ProfilingSwitcherMXBean {
 
     private boolean enabled;
 
@@ -13,6 +13,6 @@ public class ProfilingSwitcherImpl implements ProfilingSwitcherMBean {
 
     @Override
     public void setEnabled(boolean enabled) {
-
+        this.enabled = enabled;
     }
 }
