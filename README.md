@@ -25,11 +25,19 @@ You need to add a dependency in your pom.xml
 <repositories>
     <repository>
         <id>spring-profiler</id>
-        <url>https://yashchenkon.github.com/spring-profiler/mvn-repo/</url>
+        <url>https://raw.github.com/yashchenkon/spring-profiler/mvn-repo/</url>
         <snapshots>
             <enabled>true</enabled>
             <updatePolicy>always</updatePolicy>
         </snapshots>
     </repository>
 </repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>tech.yashchenkon</groupId>
+        <artifactId>profiling</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+</dependencies>
 ```
