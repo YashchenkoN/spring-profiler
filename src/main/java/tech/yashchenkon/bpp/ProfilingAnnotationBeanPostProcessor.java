@@ -1,5 +1,7 @@
 package tech.yashchenkon.bpp;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import tech.yashchenkon.annotation.Profiling;
@@ -17,6 +19,7 @@ import java.util.Map;
  */
 public class ProfilingAnnotationBeanPostProcessor implements BeanPostProcessor {
 
+    private final Log logger = LogFactory.getLog(this.getClass());
     private Map<String, Class> beans = new HashMap<>();
     private ProfilingSwitcherImpl profilingSwitcher = new ProfilingSwitcherImpl();
 
@@ -41,13 +44,12 @@ public class ProfilingAnnotationBeanPostProcessor implements BeanPostProcessor {
             return Proxy.newProxyInstance(
                     objectClass.getClassLoader(), objectClass.getInterfaces(), (proxy, method, args) -> {
                         if (profilingSwitcher.isEnabled()) {
-                            // todo remove evil System.out.println
-                            System.out.println("PROFILING...");
+                            logger.debug("PROFILING...Method: " + method.getName());
                             long before = System.nanoTime();
                             Object result = method.invoke(object, args);
                             long after = System.nanoTime();
-                            System.out.println("TIME: " + (after - before) + " ns");
-                            System.out.println("PROFILING DONE");
+                            logger.debug("TIME: " + (after - before) + " ns");
+                            logger.debug("PROFILING DONE");
                             return result;
                         } else {
                             return method.invoke(object, args);
